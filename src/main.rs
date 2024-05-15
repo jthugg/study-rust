@@ -81,4 +81,19 @@ fn main() {
     println!("str16 is {} length of {} capacity of {}", str16, str16.len(), str16.capacity());
     println!("char00 is {}", char00);
     // String.pop() 해도 용량이 줄어들진 않는다.
+
+    let str17 = String::from("aaa");
+    let str18 = "bbb";
+    let str19 = str17.clone() + str18;
+    // .clone()하지 않으면 str17의 소유권이 str19로 넘어가기 때문
+    // .clone()으로 새로운 문자열 객체 생성
+
+    println!("str17: {}", str17);
+    println!("str18: {}", str18);
+    println!("str19: {}", str19);
+
+    let str20 = String::from("ccc");
+
+    println!("str20 refers {:p} on heap", str20.as_ptr());
+    println!("str20.clone() refers {:p} on heap", str20.clone().as_ptr());
 }
