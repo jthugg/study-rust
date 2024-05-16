@@ -66,6 +66,35 @@ fn main() {
     let mut value = "ola".to_string();
     value = print_string_appended_abc_2(value);
     println!("print value in main(): {}", value);
+
+    // !참고!
+    // .clone()을 너무 많이 쓰지는 말자
+    // 힙에 과도하게 많은 객체가 할당될 수 있고 복사하는데 드는 비용도 만만찮다.
+    // 가능하면 ref를 적절하게 사용해보자
+
+    // ---------------------------------------------------------------------------------------------
+
+    // copy types
+    // 변수에 할당 된 값을 복사해서 함수에 인자로 넣는다.
+    let my_string = "abc".to_string();
+
+    append123(my_string);
+    // println!("print value in main(String): {}", my_string); // 컴파일 에러
+    // 왜?
+    // 위에서도 설명했듯 append123(String) 함수가 소유권을 가져갔고 함수가 끝남에 따라 변수가 사라짐
+    // 변수를 새로 할당하고 append123(String)에 인자를 어떻게 넣는지 보자
+    let my_string = "def".to_string();
+    append123(my_string.clone());
+    append123(my_string); // 이렇게 해도 되고 뒤에서 더 사용하고싶다면 다시 한번 .clone()하면 된다.
+    // 새로운 값을 만들어서 함수에 인자로 전달하는 것.
+
+    // 지난번 챕터 007에서 나왔듯
+    // 기본타입 중 스칼라 타입과 스칼라 타입으로 구성된 튜플들은
+    // 별도의 .clone() 없이 바로 복사되므로 그냥 사용해도 무방.
+    let number = 1;
+    add10(number);
+    add10(number);
+    add10(number);
 }
 
 fn print_arg(value: String) {
@@ -90,4 +119,13 @@ fn print_string_appended_abc_2(mut value: String) -> String { // 반환 타입�
     value.push_str(" abc!");
     println!("print value in append_string_appended_abc_2(String): {}", value);
     value
+}
+
+fn append123(mut value: String) {
+    value.push_str("123");
+    println!("print value in append123(String): {}", value);
+}
+
+fn add10(mut number: i32) {
+    number += 10;
 }
