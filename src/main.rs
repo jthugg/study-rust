@@ -35,4 +35,59 @@ fn main() {
     let var_ref = &var;
     let var = 10;
     println!("{}, {}", *var_ref, var);
+
+    // ---------------------------------------------------------------------------------------------
+
+    // 함수 간 참조
+    // move semantics
+    let value = "something".to_string();
+    print_arg(value);
+    // print_arg(value); // 이렇게 한번 더 사용하면 컴파일 에러 발생.
+    // 왜?
+    // move semantics
+    // 첫번째 print_arg(String) 함수가 value 변수의 소유권을 가져가고 함수가 끝날때 할당 해제 함.
+    // 더이상 main()에서 변수 value에 대한 소유권을 잃고 사라진다.
+    // 이 문제 해결을 위해 value 변수를 다시 할당하고 print_arg_ref(String)함수를 보자.
+    let value = "something2".to_string();
+    print_arg_ref(&value);
+    print_arg_ref(&value);
+
+    // 함수도 &mut를 사용할 수 있다.
+    let mut value = "hi".to_string();
+    append_abc(&mut value);
+    println!("print value in main: {}", value);
+
+    let value = "hello".to_string();
+    print_string_appended_abc(value);
+    // println!("print value in main(): {}", value); // 여기서 컴파일 에러
+    // main()이 소유권을 잃기 때문
+    // 다시 소유권을 얻고자 한다면 변수를 다시 할당하고 함수 append_string_appended_abc_2(String)을 보자
+
+    let mut value = "ola".to_string();
+    value = print_string_appended_abc_2(value);
+    println!("print value in main(): {}", value);
+}
+
+fn print_arg(value: String) {
+    println!("{}", value);
+}
+
+fn print_arg_ref(value: &String) {
+    println!("{}", value);
+}
+
+fn append_abc(value: &mut String) { // 함수의 매개변수로 &mut String을 요구
+    value.push_str(" abc!");
+    println!("print value in append_abc(String): {}", value);
+}
+
+fn print_string_appended_abc(mut value: String) { // 함수의 매개변수로 String을 받고 mut value: String으로 새로운 변수 할당
+    value.push_str(" abc!");
+    println!("print value in append_string_appended_abc(String): {}", value);
+}
+
+fn print_string_appended_abc_2(mut value: String) -> String { // 반환 타입이 String 이다.
+    value.push_str(" abc!");
+    println!("print value in append_string_appended_abc_2(String): {}", value);
+    value
 }
