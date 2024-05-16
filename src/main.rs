@@ -29,4 +29,10 @@ fn main() {
     // println!("y: {}", *y); // 4) immutable ref 사용
 
     // ---------------------------------------------------------------------------------------------
+
+    // Shadowing
+    let var = "value";
+    let var_ref = &var;
+    let var = 10;
+    println!("{}, {}", *var_ref, var);
 }
