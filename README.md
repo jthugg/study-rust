@@ -22,3 +22,6 @@
 - [CH008 가변 타입과 불변 타입](https://github.com/jthugg/study-rust/tree/ch008-mutable-immutable-ref)
 - [CH009 초기화되지 않은 변수와 제어 흐름](https://github.com/jthugg/study-rust/tree/ch009-uninitialized-variables-control-flow)
 - [CH010 컬렉션 타입들](https://github.com/jthugg/study-rust/tree/ch010-collection-types)
+- [CH011 제어문](https://github.com/jthugg/study-rust/tree/ch011-control-flow)
+- [CH012 match statements](https://github.com/jthugg/study-rust/tree/ch012-match-statements)
+- [CH013 구조체](https://github.com/jthugg/study-rust/tree/ch013-struct)
