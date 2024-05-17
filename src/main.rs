@@ -61,4 +61,31 @@ fn main() {
     println!("arr7's variable address: {:p}, arr7's address: {:p}", &arr7, arr7.as_ptr());
     println!("arr8's variable address: {:p}, arr8's address: {:p}", &arr8, arr8.as_ptr());
     println!("arr9's variable address: {:p}, arr9's address: {:p}", &arr9, arr9.as_ptr());
+
+    // 배열의 Destructuring
+    let [a, b, c] = ["aaa", "bbb", "ccc"];
+    println!("a: {}, b: {}, c: {}", a, b, c);
+
+    let[a, _, _] = ["aaaa", "bbbb", "cccc"]; // _는 변수 선언과 데이터 할당을 하지 않겠다는 뜻
+    println!("a: {}", a);
+
+    // ---------------------------------------------------------------------------------------------
+
+    // Vector(Vec)
+    // 따지고 보면 String 타입도 Vec로 구현돼있다. 결국 문자 타입의 컬렉션인 셈.
+    // 꺽쇠 괄호 안에 타입을 넣어주는 형태로 자바의 제네릭과 매우 유사하다.
+    // 선언을 할 때 타입을 지정해야한다.
+    // let vec00 = Vec::new(); // 선언만 하고 아무것도 안넣으면 컴파일 에러, 뒤에 뭔가 넣는 작업이 있다면 에러 x
+    let mut vec00:Vec<String> = Vec::new();
+    for value in 1..100 {
+        let mut prefix = "value".to_string();
+        prefix.push_str(&value.to_string());
+        vec00.push(prefix);
+    }
+    println!("vec00: {:?}", vec00);
+
+    let vec01 = vec![1, 2, 3]; // 이렇게 선언할 수 있다.
+    println!("vec01: {:?}", vec01);
+    let vec01 = vec!["a", "b", "c"]; // 이렇게 선언할 수 있다.
+    println!("vec01: {:?}", vec01);
 }
