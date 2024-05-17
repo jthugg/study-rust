@@ -88,4 +88,31 @@ fn main() {
     println!("vec01: {:?}", vec01);
     let vec01 = vec!["a", "b", "c"]; // 이렇게 선언할 수 있다.
     println!("vec01: {:?}", vec01);
+
+    // ---------------------------------------------------------------------------------------------
+
+    // Tuple
+    let tup00 = (); // empty tuple
+    let tup01 = (0, "name", vec![1, 2, 3]);
+
+    println!("{:?}", tup00);
+    println!("{:?}", tup01);
+
+    // Tuple indexing
+    // 튜플의 인덱스 번호로 검색 가능
+    // 구조체의 필드처럼 필드 번호로 검색할 수 있다. 따지고보면 구조체의 일부
+    println!("tup01.0: {}", tup01.0);
+    println!("tup01.1: {}", tup01.1);
+    println!("tup01.2: {:?}", tup01.2);
+
+    // Destructuring
+    // 튜플을 해체해서 각 변수에 할당 할 수 있다.
+    let (id, username, array) = tup01;
+    println!("id: {}", id);
+    println!("username: {}", username);
+    println!("array: {:?}", array);
+
+    let (id, _, _) = tup01; // 배열과 같이 이렇게 관심 없는 데이터를 무시 할 수 있다.
+    println!("id: {}", id);
+
 }
