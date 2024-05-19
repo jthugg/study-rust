@@ -25,3 +25,6 @@
 - [CH011 제어문](https://github.com/jthugg/study-rust/tree/ch011-control-flow)
 - [CH012 match statements](https://github.com/jthugg/study-rust/tree/ch012-match-statements)
 - [CH013 구조체](https://github.com/jthugg/study-rust/tree/ch013-struct)
+- [CH014 열거형](https://github.com/jthugg/study-rust/tree/ch014-enum)
+- [CH015 구현 블록](https://github.com/jthugg/study-rust/tree/ch015-impl-block)
+- [CH016 구조 분해](https://github.com/jthugg/study-rust/tree/ch016-destructuring)
